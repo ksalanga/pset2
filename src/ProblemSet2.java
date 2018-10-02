@@ -30,26 +30,57 @@ public class ProblemSet2 {
 	
 	public void gradeMe() {
 		Scanner in = new Scanner(System.in);
-		System.out.println("Homework Grade: ");
-		double homework = in.nextDouble();
-		System.out.println("Quiz Grade: ");
-		double quiz = in.nextDouble();
-		System.out.println("Test Grade: ");
-		double testgrade = in.nextDouble();
-		double grade = (double) testgrade * .55 + quiz * .3 + homework * .15;
+		System.out.println("Homework Grade 1: ");
+		double hw1 = in.nextDouble();
+		System.out.println("Homework Grade 2: ");
+		double hw2 = in.nextDouble();
+		System.out.println("Homework Grade 3: ");
+		double hw3 = in.nextDouble();
+		System.out.println("Quiz Grade 1: ");
+		double qz1 = in.nextDouble();
+		System.out.println("Quiz Grade 2: ");
+		double qz2 = in.nextDouble();
+		System.out.println("Quiz Grade 3: ");
+		double qz3 = in.nextDouble();
+		System.out.println("Test Grade 1: ");
+		double tst1 = in.nextDouble();
+		System.out.println("Test Grade 2: ");
+		double tst2 = in.nextDouble();
+		System.out.println("Test Grade 3: ");
+		double tst3 = in.nextDouble();
+		double test = (tst1+tst2+tst3)/3;
+		double quiz = (qz1+qz2+qz3)/3;
+		double homework = (hw1+hw2+hw3)/3;
+		double grade = (double) test * .55 + quiz * .3 + homework * .15;
 		System.out.println(grade + "%");
 	}
 	
 	public void groupUs() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("How many students will be attending?");
-		double students = in.nextDouble(); 
+		double total = in.nextDouble(); 
 		System.out.println("How many teachers will be attending?");
-		double teachers = in.nextDouble(); 
+		total += in.nextDouble(); 
 		in.nextLine(); 
+		double buscounter = Math.ceil(total/46);
 		
-		int buses = (int) Math.ceil((students + teachers) / 46); 
+		int buses = (int) Math.ceil(total / 46); 
 		System.out.println("You need " + buses + " buses for the trip!");
+		for (int amount = 1; amount <= buscounter; amount++) {
+			double equation = total % buscounter;
+		if (amount == 1 && total >= 46) {
+			System.out.println("Bus1 will have 47 people including the driver");
+			}
+		else if (amount != 1){
+				System.out.println("Bus" + amount + " will have " + equation + " people.");
+				buscounter--;
+				total = total - 46;
+			}
+		else {
+				System.out.println("Bus1 will have " + (total + 1) + " amount of people (including the driver).");
+			}
+			
+		}
 		System.out.println(" ");
 	}
 	
